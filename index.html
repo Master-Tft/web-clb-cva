@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<head>
+    <title>THPT Chuyên Chu Văn An - Gia Lai</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            background: #f0f4f8; 
+            color: #2d3436; 
+            line-height: 1.6;
+        }
+
+        header { 
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://scontent-hkg1-2.xx.fbcdn.net/v/t39.30808-6/479241011_1419050292842921_5991595252077004816_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHRmsIbnZQFX5Uya9QSUZ8MIvMB9Ay_UW4i8wH0DL9Rbi1fe6qYi3y8-yXeUdwWRPqOtj5IdRMddHsteItXvthK&_nc_ohc=bxbpInRAKcoQ7kNvwHCn22r&_nc_oc=Adnj9p6YvpEEV0ioxbldxx2cbg3rLKbGjY8NrbI7xdZve0qZ0Y54MR878GwG98RYHpboI1q6rwSy5lY28-OUAJoO&_nc_zt=23&_nc_ht=scontent-hkg1-2.xx&_nc_gid=emPteoEGh2ja_D3G0wxwRg&oh=00_AfqDMqlRk6-4v9KAqA00X5jsIwu8oh2CG95U0rOv80P2-A&oe=697F326A');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            color: white; 
+            text-align: center; 
+            padding: 100px 20px;
+        }
+        header h1 { font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin-bottom: 10px; }
+        header p { font-size: 1.2rem; opacity: 0.9; }
+
+        nav { 
+            background: #073763; 
+            text-align: center; 
+            padding: 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        nav a { 
+            display: inline-block;
+            color: white; 
+            padding: 18px 25px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: background 0.3s;
+        }
+        nav a:hover { background: #0b5394; }
+
+        .container { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+
+        .page { 
+            display: none; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        #trang-chu:target, #clb-ai:target, #clb-thanh-am:target, #clb-dien-xuat:target { display: block; }
+        #trang-chu { display: block; } 
+        :target ~ #trang-chu { display: none; }
+
+        h2 { color: #073763; font-size: 1.8rem; margin-top: 0; border-left: 6px solid #e67e22; padding-left: 15px; }
+        
+        .the-clb { 
+            border: none;
+            margin: 25px 0; 
+            border-radius: 15px; 
+            display: flex;
+            align-items: center;
+            text-decoration: none; 
+            color: #333; 
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .the-clb:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+        
+        .img-clb-thumb { width: 40%; height: 220px; object-fit: cover; }
+        .nội-dung-clb { padding: 30px; width: 60%; }
+        .nội-dung-clb h3 { margin-top: 0; color: #0b5394; font-size: 1.4rem; }
+
+        .banner-clb { width: 100%; height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 25px; }
+        .quay-lai { 
+            display: inline-block; 
+            margin-bottom: 20px; 
+            color: #0b5394; 
+            text-decoration: none; 
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .quay-lai:hover { color: #e67e22; }
+
+
+        .form-dang-ky { background: #fdfdfd; padding: 30px; border-radius: 12px; border: 1px solid #edf2f7; }
+        .form-dang-ky h3 { margin-top: 0; margin-bottom: 20px; color: #2d3436; }
+        input, textarea { 
+            width: 100%; 
+            padding: 14px; 
+            margin: 12px 0; 
+            border: 2px solid #e2e8f0; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus { border-color: #0b5394; outline: none; }
+        
+        button { 
+            background: #0b5394; 
+            color: white; 
+            border: none; 
+            padding: 15px 35px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 700; 
+            font-size: 1rem;
+            width: 100%;
+            transition: 0.3s;
+        }
+        button:hover { background: #e67e22; transform: scale(1.01); }
+
+        footer { text-align: center; padding: 40px; color: #636e72; font-size: 0.9rem; border-top: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Trường THPT Chuyên Chu Văn An</h1>
+    <p>Gia Lai – Nơi đam mê dẫn lối thành công</p>
+</header>
+
+<nav>
+    <a href="#trang-chu">TRANG CHỦ</a>
+    <a href="#clb-ai">CLB AI</a>
+    <a href="#clb-thanh-am">CLB THANH ÂM</a>
+    <a href="#clb-dien-xuat">CLB DIỄN XUẤT</a>
+</nav>
+
+<div class="container">
+
+    <div id="clb-ai" class="page">
+        <a href="#trang-chu" class="quay-lai">← Quay lại trang chủ</a>
+        <img src="https://cdn.tgdd.vn/hoi-dap/1216572/tri-tue-nhan-tao-ai-la-gi-cac-ung-dung-va-tiem-nan-7-800x450.jpg" class="banner-clb" alt="AI Club">
+        <h2>Câu lạc bộ AI & Công nghệ</h2>
+        <p>Kiến tạo tương lai với trí tuệ nhân tạo. Tham gia cùng chúng mình để làm chủ các ngôn ngữ lập trình Python, C++ và nghiên cứu những công nghệ thay đổi thế giới.</p>
+        <div class="form-dang-ky">
+            <h3>Đơn đăng ký tham gia</h3>
+            <form action="#">
+                <input type="text" placeholder="Họ và tên của bạn" required>
+                <input type="text" placeholder="Lớp học hiện tại" required>
+                <textarea rows="4" placeholder="Bạn mong muốn học được điều gì từ CLB?" required></textarea>
+                <button type="submit">XÁC NHẬN GỬI ĐƠN</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="clb-thanh-am" class="page">
+        <a href="#trang-chu" class="quay-lai">← Quay lại trang chủ</a>
+        <img src="https://scontent-hkg1-2.xx.fbcdn.net/v/t39.30808-6/596407737_122196831878325693_368149243843819584_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeE6b2ayr58dZtiqKIww68yVpCJzg5IAOzukInODkgA7O_ypQi5Cx_BKgL7yTNiw0mqukQ66g0j-ZPrR9eRNWvOx&_nc_ohc=7iCzHg7WSaIQ7kNvwGdDwSl&_nc_oc=AdkiARRi8HralU_3CX5Ps6vIOzBzcirIhwkOGTRY59gsuVkrszanUlG0ScVn6sqFWeU4s4szO3pjvY2Hqj4Gbrr8&_nc_zt=23&_nc_ht=scontent-hkg1-2.xx&_nc_gid=b4OFVMdR09zDWLWTK1gMhg&oh=00_Afq-QJWPF3K4-2gpFeTy-0f5B1P8f94qe_EUiueq-h5wNQ&oe=697F30AD" class="banner-clb" alt="Music Club">
+        <h2>Câu lạc bộ Thanh Âm</h2>
+        <p>Âm nhạc là hơi thở của Chu Văn An. Nơi hội tụ những tay đàn điêu luyện và những giọng ca đầy nội lực để cùng nhau tạo nên những bản phối tuyệt vời.</p>
+        <div class="form-dang-ky">
+            <h3>Đơn đăng ký tham gia</h3>
+            <form action="#">
+                <input type="text" placeholder="Họ và tên nghệ sĩ" required>
+                <input type="text" placeholder="Năng khiếu chính (Hát, Guitar, Piano...)" required>
+                <button type="submit">XÁC NHẬN GỬI ĐƠN</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="clb-dien-xuat" class="page">
+        <a href="#trang-chu" class="quay-lai">← Quay lại trang chủ</a>
+        <img src="https://scontent-hkg1-2.xx.fbcdn.net/v/t39.30808-6/543120269_122137713980870994_4771956591741100193_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHaBcgsErsLg1OxkFgYtm_Q3VsRNYd-TQ3dWxE1h35NDSlUxrgm86QbyeLS5bPyL3D5LAoRZ6NCIHlV5XzStjui&_nc_ohc=Ji8d8yqfq3QQ7kNvwHD8_V0&_nc_oc=AdmacDMBk38QewOXqw0eoIjtMzK3GLrNiHOGlWKSNro4qtMqxeh7NYYe9xYUt5Woj2OgxwFvq_x720Pl4ap94Y60&_nc_zt=23&_nc_ht=scontent-hkg1-2.xx&_nc_gid=yzq6xfmUxs_Q208Xu5rlPA&oh=00_AfpKmBo2omMVLJkByKFsE8JQmKtStirBpVuFRmSeyeSE0A&oe=697F2FE5" class="banner-clb" alt="Drama Club">
+        <h2>Câu lạc bộ Diễn Xuất</h2>
+        <p>Bộc lộ cá tính qua từng vai diễn. Chúng mình giúp bạn làm chủ sân khấu, tự tin trước đám đông và rèn luyện ngôn ngữ hình thể một cách chuyên nghiệp.</p>
+        <div class="form-dang-ky">
+            <h3>Đơn đăng ký tham gia</h3>
+            <form action="#">
+                <input type="text" placeholder="Họ và tên của bạn" required>
+                <textarea rows="4" placeholder="Chia sẻ về đam mê diễn xuất của bạn..." required></textarea>
+                <button type="submit">XÁC NHẬN GỬI ĐƠN</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="trang-chu" class="page">
+        <h2>Giới thiệu nhà trường</h2>
+        <p>Với không gian xanh mát và truyền thống học tập lâu đời, THPT Chuyên Chu Văn An – Gia Lai không chỉ đào tạo học thuật mà còn là sân chơi năng động cho các bạn phát triển toàn diện mọi kỹ năng.</p>
+        
+        <h2 style="margin-top: 50px;">Khám phá các Câu lạc bộ</h2>
+        
+        <a href="#clb-ai" class="the-clb">
+            <img src="https://cdn.tgdd.vn/hoi-dap/1216572/tri-tue-nhan-tao-ai-la-gi-cac-ung-dung-va-tiem-nan-10-800x450.jpg" class="img-clb-thumb" alt="AI">
+            <div class="nội-dung-clb">
+                <h3>🤖 CLB AI & Công nghệ</h3>
+                <p>Khám phá thế giới lập trình và trí tuệ nhân tạo đầy kịch tính.</p>
+            </div>
+        </a>
+
+        <a href="#clb-thanh-am" class="the-clb">
+            <img src="https://scontent-hkg1-2.xx.fbcdn.net/v/t39.30808-6/595205914_122196931520325693_2433002036369597488_n.png?stp=dst-png_s960x960&_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeFshYDT0ke0NJvhJUh5hyJmx4Oir32atx3Hg6KvfZq3HTTvnzjdieVWx8cXNkvOWzQAcOiIK0SRDPR4b8Y8HZnT&_nc_ohc=tF3cr_xEXPYQ7kNvwH6i93r&_nc_oc=AdmChNrQsxBu3L1PlK15k6gwH6GLWM5d94Wt6h4frJofZW7pvRthwTMdTZCfrFlX1QeCy6cmDDB_jfiY8XQ2B3gf&_nc_zt=23&_nc_ht=scontent-hkg1-2.xx&_nc_gid=mrzmoY_rCj1m7FTulIml_Q&oh=00_AfoQid-cebv_boi9bBmJhAUnyIFXdVVcQFzC_AbMZUDyVQ&oe=697F5B65" class="img-clb-thumb" alt="Music">
+            <div class="nội-dung-clb">
+                <h3>🎵 CLB Thanh Âm</h3>
+                <p>Nơi âm nhạc hòa quyện với tâm hồn và sự sáng tạo không giới hạn.</p>
+            </div>
+        </a>
+
+        <a href="#clb-dien-xuat" class="the-clb">
+            <img src="https://scontent-hkg1-2.xx.fbcdn.net/v/t39.30808-6/497612473_122099591330870994_6182237182878190578_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGFrWIWL_PgF_TUqY2C84ESTy6DtWK7bcFPLoO1YrttwRlM9VMiuZCdl8mhJZ3mVOLiMXt8wbXsuM03AYPGPbb6&_nc_ohc=b1T4U-A3LOsQ7kNvwHhilgi&_nc_oc=AdmCyqsBZnuGJ3KRfeQXciLM4biLYvqD09cQLv9xTOk-WQPY0x30HWP_hcDZEGjGJctimsurLRnDLaNbWx5UMhUX&_nc_zt=23&_nc_ht=scontent-hkg1-2.xx&_nc_gid=vA6illrBVTvBZRERiQWdUA&oh=00_AfojaWI8bTZZEk3sqhqLl-E1d6ZyxHOmssMAQaLZO3JoMQ&oe=697F3831" class="img-clb-thumb" alt="Drama">
+            <div class="nội-dung-clb">
+                <h3>🎭 CLB Diễn Xuất</h3>
+                <p>Tỏa sáng tài năng nghệ thuật và sự tự tin bộc phá trên sân khấu kịch.</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 TRƯỜNG THPT CHUYÊN CHU VĂN AN - GIA LAI<br>
+    ĐC: Khu phố 5, phường Bồng Sơn, Gia Lai, Việt Namai
+</footer>
+
+</body>
+
+</html>
